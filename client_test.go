@@ -1,6 +1,7 @@
 package keycloak
 
 import (
+	"context"
 	"os"
 	"testing"
 
@@ -14,7 +15,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestNewClient_Connection(t *testing.T) {
-	client := NewClient(&Config{
+	client := NewClient(context.Background(), &Config{
 		BaseURL:      os.Getenv("BASE_URL"),
 		ClientID:     os.Getenv("CLIENT_ID"),
 		ClientSecret: os.Getenv("CLIENT_SECRET"),
